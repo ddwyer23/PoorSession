@@ -40,7 +40,7 @@
 				</label> <input type="password" required autocomplete="off" name="pswd" />
 			</div>
 
-			<button class="button button-block" />
+			<button class="btn btn-primary 	 button button-block" />
 			Submit
 			</button>
 

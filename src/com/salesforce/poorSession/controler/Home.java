@@ -33,7 +33,7 @@ public class Home extends HttpServlet {
 		if(request.getSession().getAttribute("user") != null){
 			request.getRequestDispatcher("/home.jsp").forward(request, response);
 		}else{
-			response.sendRedirect(request.getContextPath() + "/Login");
+			response.sendRedirect(request.getContextPath() + "/Login;jsessionid="+request.getSession().getId());
 		}
 		// TODO Auto-generated method stub
 	}

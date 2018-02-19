@@ -34,7 +34,10 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		if(request.getSession().isNew()){
+			response.sendRedirect(request.getContextPath() + "/Login;jsessionid="+request.getSession().getId());
+			return;
+		}
 		if (request.getSession().getAttribute("user") == null) {
 			// redirect to login with error message
 			request.getRequestDispatcher("/Login.jsp").forward(request, response);
