@@ -8,7 +8,7 @@ public class MySessionManager extends StandardManager {
     @Override
     public synchronized String generateSessionId() { 
     	SESSION++;
-    	String sessionId = Double.toHexString(SESSION);
+    	String sessionId = Double.toHexString(SESSION).toUpperCase();
     	//String sessionId = Long.toHexString(Double.doubleToLongBits(Math.random()));
         return sessionId;
     }

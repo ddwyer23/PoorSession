@@ -19,12 +19,12 @@
 }
 </style>
 </head>
-<body style="background-color:#f7f4e9">
-<div id="grad" style="color:#FFFFFF;">
+<body style="margin-left:2%; background-color:#f7f4e9">
+<div id="grad" style="color:#FFFFFF;margin-left:-2%;padding-left:2%; margin-bottom:2%">
 		<h2 style="display:inline-block;"><b>Insecure Application <div style="display: inline-block; font-size:28px">®</div></b></h2>
-		<img style="display:inline-block; width:8%;height:8%;float:right;" src="/SessionFixationDemo/salesforce.png"> </img>
+		<img style="display:inline-block; width:5%;height:5%;float:right;" src="/SessionFixationDemo/salesforce.png"> </img>
 </div>
-	<h3>Login</h3>
+	<h3 >Login</h3>
 
 	<div id="login" style="background-color:#f7f4e9">
 
@@ -47,7 +47,7 @@
 		</form>
 		
 	</div>
-	<h4>
+	<h4 style="margin-top:5%">
 		Your session id is:
 		<%=session.getId()%>
 	</h4>

@@ -1,6 +1,5 @@
 package com.salesforce.poorSession.controler;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -10,22 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.salesforce.poorSession.model.User;
-import com.salesforce.poorSession.service.LoginManager;
-
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Home
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/Home")
+public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private LoginManager loginManager = new LoginManager();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public Home() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +27,15 @@ public class Login extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if (request.getSession().getAttribute("user") == null) {
-			// redirect to login with error message
-			request.getRequestDispatcher("/Login.jsp").forward(request, response);
+		if(request.getSession().getAttribute("user") != null){
+			request.getRequestDispatcher("/home.jsp").forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath() + "/Login");
 		}
-		else {
-			response.sendRedirect(request.getContextPath() + "/Home;jsessionid="+request.getSession().getId());
-		}
+		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -49,15 +43,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("user");
-		String password = request.getParameter("pswd");
-		User user = loginManager.authenticate(username, password);
-		if(user == null){
-			request.getRequestDispatcher("/Login.jsp").forward(request, response);
-		}else{
-			request.getSession().setAttribute("user", user);
-			response.sendRedirect(request.getContextPath() + "/Home;jsessionid="+request.getSession().getId());
-		}
+		doGet(request, response);
 	}
 
 }
