@@ -5,36 +5,51 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Log form</title>
-</head>
-<body>
-	<h2>Login form</h2>
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="/SessionFixationDemo/fonts/fonts.min.css" />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
-	<div id="login">
-		<h1>Welcome Back!</h1>
+
+<style>
+    body {
+      font-family: 'Proxima Nova';
+    }
+    #grad {
+    background: linear-gradient(to right, #1798c1, white);
+}
+</style>
+</head>
+<body style="background-color:#f7f4e9">
+<div id="grad" style="color:#FFFFFF;">
+		<h2 style="display:inline-block;"><b>Insecure Application <div style="display: inline-block; font-size:28px">®</div></b></h2>
+		<img style="display:inline-block; width:8%;height:8%;float:right;" src="/SessionFixationDemo/salesforce.png"> </img>
+</div>
+	<h3>Login</h3>
+
+	<div id="login" style="background-color:#f7f4e9">
 
 		<form action="<c:url value = "/Login"/>" method="post">
 
 			<div class="field-wrap">
-				<label> username<span class="req">*</span>
+				<label> Username<span class="req">:</span>
 				</label> <input required autocomplete="off" name="user" />
 			</div>
 
 			<div class="field-wrap">
-				<label> Password<span class="req">*</span>
+				<label> Password<span class="req">:</span>
 				</label> <input type="password" required autocomplete="off" name="pswd" />
 			</div>
 
 			<button class="button button-block" />
-			Log In
+			Submit
 			</button>
 
 		</form>
 		
 	</div>
-	<h3>
-		your session is:
+	<h4>
+		Your session id is:
 		<%=session.getId()%>
-	</h3>
+	</h4>
 </body>
 </html>
