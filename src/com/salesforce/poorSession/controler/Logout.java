@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.salesforce.poorSession.service.MySessionManager;
+
 /**
  * Servlet implementation class Login
  */
@@ -27,9 +29,12 @@ public class Logout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().invalidate();
-		request.getSession(true);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		//request.getSession().invalidate();
+		//request.getSession(true);
+		
+		MySessionManager manager = new MySessionManager();
+		String newSessionId = manager.generateSessionId();
+		response.sendRedirect(request.getContextPath() + "/Login;jsessionid="+newSessionId);
 	}
 
 	/**

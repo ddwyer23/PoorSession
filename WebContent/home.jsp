@@ -7,19 +7,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="/SessionFixationDemo/fonts/fonts.min.css" />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<style>
+    body {
+      font-family: 'Proxima Nova';
+    }
+        #grad {
+    background: linear-gradient(to right, #1798c1, white);
+}
+</style>
 </head>
-<body>
+<body style="margin-left:2%">
 	<%
 		if (session != null) {
 			User user = (User) session.getAttribute("user");
 			if (user != null) {
+		
+				
 				%>
-	<h2>
-		Welcome Home:
-		<%=user.getFirstName()%>
-		<%=user.getLastName()%>
-	</h2>
+				
+				<div id="grad" style="color:#FFFFFF;margin-left:-2%;padding-left:2%; margin-bottom:2%">
+		<h2 style="display:inline-block;"><b>Welcome, <%=user.getFirstName()%> <%=user.getLastName()%>. </b></h2>
+		<img style="display:inline-block; width:5%;height:5%;float:right;" src="/SessionFixationDemo/salesforce.png"> </img>
+</div>
+				
+
+	
+		<h4>
+		Here's your SSN:  123-45-6789
+	</h4>
+	
 	<% 
 			}
 			else {
@@ -29,12 +49,12 @@
 		}
 	%>
 
-	<h3>
-		your session is:
+	<h4 style="margin-top:5%">
+		Your session id is:
 		<%=session.getId()%>
-	</h3>
+	</h4>
 
-	<a href="<c:url value ="/Logout"/>" class="w3-btn w3-black">Logout</a>
+	<button class="btn btn-primary"><a href="<c:url value ="/Logout"/>" class="">Logout</a></button>
 
 </body>
 </html>
